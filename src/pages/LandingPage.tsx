@@ -144,6 +144,7 @@ const LandingPage = () => {
               <a href="#features" className="text-white hover:text-primary-400 transition-colors">Features</a>
               <a href="#comparison" className="text-white hover:text-primary-400 transition-colors">Compare</a>
               <a href="#pricing" className="text-white hover:text-primary-400 transition-colors">Pricing</a>
+              <Link to="/about" className="text-white hover:text-primary-400 transition-colors">About</Link>
               <a href="https://github.com/euda-app" className="text-white hover:text-primary-400 transition-colors flex items-center gap-1">
                 <Github className="w-4 h-4" />
                 GitHub
@@ -171,6 +172,7 @@ const LandingPage = () => {
                 <a href="#features" className="text-white hover:text-primary-400 transition-colors">Features</a>
                 <a href="#comparison" className="text-white hover:text-primary-400 transition-colors">Compare</a>
                 <a href="#pricing" className="text-white hover:text-primary-400 transition-colors">Pricing</a>
+                <Link to="/about" className="text-white hover:text-primary-400 transition-colors">About</Link>
                 <a href="https://github.com/euda-app" className="text-white hover:text-primary-400 transition-colors flex items-center gap-1">
                   <Github className="w-4 h-4" />
                   GitHub
@@ -230,6 +232,38 @@ const LandingPage = () => {
                 <div className="text-gray-300">Data Collection</div>
               </div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Young Developer Highlight */}
+      <section className="py-16 px-6 bg-gradient-to-r from-primary-900/50 to-purple-900/50">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-300 px-4 py-2 rounded-full mb-6">
+              <Star className="w-4 h-4" />
+              <span className="text-sm font-medium">Built by a Young Developer</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Proving Age is Just a Number
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              This professional-grade editing suite was created by an 11-year-old developer who believes 
+              that powerful tools should be free and accessible to everyone.
+            </p>
+            <Link 
+              to="/about" 
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-lg font-medium transition-all border border-white/20"
+            >
+              <Sparkles className="w-5 h-5" />
+              Learn the Story
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
         </div>
       </section>
