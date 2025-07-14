@@ -1,4 +1,4 @@
-import React from 'react'
+a import React from 'react'
 import { useStore } from '../store/useStore'
 import { motion } from 'framer-motion'
 import { 
@@ -93,7 +93,7 @@ const WelcomeScreen = () => {
       icon: Github,
       title: 'Source Code',
       description: 'View on GitHub',
-      action: () => window.open('https://github.com/euda-app', '_blank')
+      action: () => window.open('https://github.com/JJPEOPLES/euda', '_blank')
     },
     {
       icon: Lightbulb,

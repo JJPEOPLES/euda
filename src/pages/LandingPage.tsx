@@ -173,7 +173,7 @@ const LandingPage = () => {
                 <a href="#comparison" className="text-white hover:text-primary-400 transition-colors">Compare</a>
                 <a href="#pricing" className="text-white hover:text-primary-400 transition-colors">Pricing</a>
                 <Link to="/about" className="text-white hover:text-primary-400 transition-colors">About</Link>
-                <a href="https://github.com/euda-app" className="text-white hover:text-primary-400 transition-colors flex items-center gap-1">
+                <a href="https://github.com/JJPEOPLES/euda className="text-white hover:text-primary-400 transition-colors flex items-center gap-1">
                   <Github className="w-4 h-4" />
                   GitHub
                 </a>
