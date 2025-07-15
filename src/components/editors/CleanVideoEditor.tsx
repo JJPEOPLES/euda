@@ -66,7 +66,6 @@ import {
   Crown,
   Shield,
   Rocket,
-  Lightning,
   Globe,
   Sun,
   Moon,
@@ -280,7 +279,7 @@ const CleanVideoEditor = () => {
                   : 'bg-gradient-to-r from-blue-500 to-purple-500'
               }`}
             >
-              <Lightning className="w-5 h-5 inline mr-2" />
+              <Zap className="w-5 h-5 inline mr-2" />
               {quantumMode ? 'QUANTUM ON' : 'QUANTUM'}
             </motion.button>
             
