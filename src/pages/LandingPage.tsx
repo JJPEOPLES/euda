@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link }       highlights: ["Waveform editing", "Audio effects", "Mixing & mastering", "Format support"],
+      comingSoon: false
+    },
+    {
+      icon: FileText,
+      title: "Rich Document Editor",
+      description: "Advanced formatting, tables, images, collaboration features, and export to PDF, Word, and more.",
+      color: "from-yellow-500 to-amber-500",
+      highlights: ["Rich formatting", "Tables & images", "Export options", "Collaboration"],
+      comingSoon: falsedom'
 import { motion } from 'framer-motion'
 import { 
   Code, 
