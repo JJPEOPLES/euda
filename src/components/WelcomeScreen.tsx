@@ -1,4 +1,4 @@
-a import React from 'react'
+import React from 'react'
 import { useStore } from '../store/useStore'
 import { motion } from 'framer-motion'
 import { 

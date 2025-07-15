@@ -19,19 +19,19 @@ const TextEditor = () => {
   const { currentFile, updateFileContent, theme } = useStore()
   const editorRef = useRef<any>(null)
 
-  const handleEditorDidMount = (editor: any) => {
+  const handleEditorDidMount = (editor: any, monaco: any) => {
     editorRef.current = editor
     
     // Add keyboard shortcuts
-    editor.addCommand((window as any).monaco.KeyMod.CtrlCmd | (window as any).monaco.KeyCode.KeyS, () => {
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
       // Save handled by parent
     })
     
-    editor.addCommand((window as any).monaco.KeyMod.CtrlCmd | (window as any).monaco.KeyCode.KeyF, () => {
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyF, () => {
       editor.getAction('actions.find').run()
     })
     
-    editor.addCommand((window as any).monaco.KeyMod.CtrlCmd | (window as any).monaco.KeyCode.KeyH, () => {
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyH, () => {
       editor.getAction('editor.action.startFindReplaceAction').run()
     })
   }
@@ -83,8 +83,14 @@ const TextEditor = () => {
     const editor = editorRef.current
     if (editor) {
       const position = editor.getPosition()
+      const range = {
+        startLineNumber: position.lineNumber,
+        startColumn: position.column,
+        endLineNumber: position.lineNumber,
+        endColumn: position.column
+      }
       editor.executeEdits('', [{
-        range: new (window as any).monaco.Range(position.lineNumber, position.column, position.lineNumber, position.column),
+        range: range,
         text: snippet
       }])
       editor.focus()

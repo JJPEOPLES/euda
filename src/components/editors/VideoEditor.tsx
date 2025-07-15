@@ -50,14 +50,24 @@ const VideoEditor = () => {
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
-    if (file && file.type.startsWith('video/')) {
-      const reader = new FileReader()
-      reader.onload = (e) => {
-        const videoData = e.target?.result as string
-        setVideoUrl(videoData)
-        updateFileContent(videoData)
+    if (file) {
+      if (!file.type.startsWith('video/')) {
+        alert('Please select a valid video file')
+        return
       }
-      reader.readAsDataURL(file)
+      
+      // Create object URL for better performance with large files
+      const url = URL.createObjectURL(file)
+      setVideoUrl(url)
+      
+      // For file content, store file info instead of full data
+      const fileInfo = {
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        url: url
+      }
+      updateFileContent(JSON.stringify(fileInfo))
     }
   }
 
