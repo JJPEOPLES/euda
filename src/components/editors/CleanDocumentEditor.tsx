@@ -18,6 +18,7 @@ import {
   Code,
   Link,
   Image,
+  Table,
   Save,
   Download,
   Upload,
@@ -80,20 +81,19 @@ import {
   Moon
 } from 'lucide-react'
 
-const CleanTextEditor = () => {
+const CleanDocumentEditor = () => {
   const { currentFile, updateFile } = useStore()
-  const editorRef = useRef<HTMLTextAreaElement>(null)
+  const editorRef = useRef<HTMLDivElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [content, setContent] = useState('')
   const [selectedTool, setSelectedTool] = useState('text')
-  const [fontSize, setFontSize] = useState(16)
-  const [fontFamily, setFontFamily] = useState('Monaco')
-  const [theme, setTheme] = useState('dark')
+  const [fontSize, setFontSize] = useState(14)
+  const [fontFamily, setFontFamily] = useState('Arial')
+  const [textAlign, setTextAlign] = useState('left')
   const [aiMode, setAiMode] = useState(false)
   const [godMode, setGodMode] = useState(false)
   const [quantumMode, setQuantumMode] = useState(false)
   const [wordCount, setWordCount] = useState(0)
-  const [lineCount, setLineCount] = useState(1)
   const [charCount, setCharCount] = useState(0)
 
   const tools = [
@@ -101,19 +101,24 @@ const CleanTextEditor = () => {
     { id: 'bold', icon: Bold, name: 'Bold', color: 'text-gray-700' },
     { id: 'italic', icon: Italic, name: 'Italic', color: 'text-gray-700' },
     { id: 'underline', icon: Underline, name: 'Underline', color: 'text-gray-700' },
+    { id: 'strikethrough', icon: Strikethrough, name: 'Strikethrough', color: 'text-gray-700' },
+    { id: 'quote', icon: Quote, name: 'Quote', color: 'text-purple-500' },
     { id: 'code', icon: Code, name: 'Code', color: 'text-green-500' },
     { id: 'link', icon: Link, name: 'Link', color: 'text-blue-500' },
-    { id: 'quote', icon: Quote, name: 'Quote', color: 'text-purple-500' },
-    { id: 'list', icon: List, name: 'List', color: 'text-orange-500' },
-    { id: 'search', icon: Search, name: 'Search', color: 'text-yellow-500' },
-    { id: 'replace', icon: Replace, name: 'Replace', color: 'text-red-500' }
+    { id: 'image', icon: Image, name: 'Image', color: 'text-pink-500' },
+    { id: 'table', icon: Table, name: 'Table', color: 'text-orange-500' }
   ]
 
-  const themes = [
-    { id: 'dark', name: 'Dark', bg: 'bg-gray-900', text: 'text-white' },
-    { id: 'light', name: 'Light', bg: 'bg-white', text: 'text-gray-900' },
-    { id: 'monokai', name: 'Monokai', bg: 'bg-gray-800', text: 'text-green-400' },
-    { id: 'dracula', name: 'Dracula', bg: 'bg-purple-900', text: 'text-purple-100' }
+  const alignmentTools = [
+    { id: 'left', icon: AlignLeft, name: 'Align Left' },
+    { id: 'center', icon: AlignCenter, name: 'Align Center' },
+    { id: 'right', icon: AlignRight, name: 'Align Right' },
+    { id: 'justify', icon: AlignJustify, name: 'Justify' }
+  ]
+
+  const listTools = [
+    { id: 'bullet', icon: List, name: 'Bullet List' },
+    { id: 'numbered', icon: ListOrdered, name: 'Numbered List' }
   ]
 
   useEffect(() => {
@@ -126,7 +131,6 @@ const CleanTextEditor = () => {
     const words = content.trim().split(/\s+/).filter(word => word.length > 0)
     setWordCount(words.length)
     setCharCount(content.length)
-    setLineCount(content.split('\n').length)
   }, [content])
 
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -152,51 +156,19 @@ const CleanTextEditor = () => {
     }
   }
 
-  const insertText = (text: string) => {
-    if (editorRef.current) {
-      const start = editorRef.current.selectionStart
-      const end = editorRef.current.selectionEnd
-      const newContent = content.substring(0, start) + text + content.substring(end)
-      setContent(newContent)
-      if (currentFile) {
-        updateFile(currentFile.id, { content: newContent })
-      }
-    }
+  const applyFormat = (format: string) => {
+    console.log(`Applying format: ${format}`)
+    // In a real implementation, this would apply text formatting
   }
 
-  const applyFormat = (format: string) => {
-    switch (format) {
-      case 'bold':
-        insertText('**bold text**')
-        break
-      case 'italic':
-        insertText('*italic text*')
-        break
-      case 'code':
-        insertText('`code`')
-        break
-      case 'quote':
-        insertText('> Quote')
-        break
-      case 'link':
-        insertText('[link text](url)')
-        break
-      case 'list':
-        insertText('- List item')
-        break
-      default:
-        console.log(`Format: ${format}`)
-    }
+  const insertElement = (element: string) => {
+    console.log(`Inserting element: ${element}`)
+    // In a real implementation, this would insert elements like tables, images, etc.
   }
 
   const exportDocument = () => {
-    const blob = new Blob([content], { type: 'text/plain' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `${currentFile?.name || 'document'}.txt`
-    a.click()
-    URL.revokeObjectURL(url)
+    console.log('Exporting document...')
+    // In a real implementation, this would handle document export
   }
 
   const saveDocument = () => {
@@ -206,7 +178,7 @@ const CleanTextEditor = () => {
 
   if (!currentFile) {
     return (
-      <div className="flex items-center justify-center h-full bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+      <div className="flex items-center justify-center h-full bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
         <div className="text-center">
           <motion.div
             animate={{ 
@@ -222,8 +194,8 @@ const CleanTextEditor = () => {
           >
             <FileText className="w-16 h-16 text-white" />
           </motion.div>
-          <h2 className="text-4xl font-bold text-white mb-4">GT4 Text Pro</h2>
-          <p className="text-xl text-gray-300">Create or upload a text file to begin</p>
+          <h2 className="text-4xl font-bold text-white mb-4">GT4 Document Pro</h2>
+          <p className="text-xl text-gray-300">Create or upload a document to begin</p>
           <div className="flex items-center gap-4 mt-8">
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -232,7 +204,7 @@ const CleanTextEditor = () => {
               className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all text-lg"
             >
               <Upload className="w-6 h-6 inline mr-3" />
-              Upload File
+              Upload Document
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -241,13 +213,13 @@ const CleanTextEditor = () => {
               className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all text-lg"
             >
               <FileText className="w-6 h-6 inline mr-3" />
-              New File
+              New Document
             </motion.button>
           </div>
           <input
             ref={fileInputRef}
             type="file"
-            accept=".txt,.md,.js,.ts,.jsx,.tsx,.css,.html,.json,.xml,.py,.java,.cpp,.c,.php,.rb,.go,.rs,.swift,.kt,.dart,.scala,.sh,.yaml,.yml,.toml,.ini,.cfg,.conf"
+            accept=".txt,.md,.doc,.docx"
             onChange={handleFileUpload}
             className="hidden"
           />
@@ -256,17 +228,15 @@ const CleanTextEditor = () => {
     )
   }
 
-  const currentTheme = themes.find(t => t.id === theme) || themes[0]
-
   return (
-    <div className={`clean-text-editor flex flex-col h-full bg-gradient-to-br from-gray-900 to-black text-white ${
+    <div className={`clean-document-editor flex flex-col h-full bg-gradient-to-br from-gray-900 to-black text-white ${
       godMode ? 'god-mode' : ''
     } ${
       quantumMode ? 'quantum-mode' : ''
     }`}>
       
       {/* 🔥 LEGENDARY HEADER */}
-      <div className="header bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 text-white p-4">
+      <div className="header bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <motion.div
@@ -274,25 +244,21 @@ const CleanTextEditor = () => {
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center"
             >
-              <Type className="w-6 h-6" />
+              <FileText className="w-6 h-6" />
             </motion.div>
             
             <div>
-              <h1 className="text-2xl font-bold">GT4 TEXT PRO</h1>
-              <p className="text-sm text-gray-300">Advanced Text Editor</p>
+              <h1 className="text-2xl font-bold">GT4 DOCUMENT PRO</h1>
+              <p className="text-sm text-gray-300">Professional Document Editor</p>
             </div>
             
             <div className="flex items-center gap-4 bg-black/30 rounded-lg px-3 py-1">
-              <div className="flex items-center gap-2">
-                <Hash className="w-4 h-4 text-gray-400" />
-                <span className="text-sm">{lineCount} lines</span>
-              </div>
               <div className="flex items-center gap-2">
                 <Type className="w-4 h-4 text-gray-400" />
                 <span className="text-sm">{wordCount} words</span>
               </div>
               <div className="flex items-center gap-2">
-                <AtSign className="w-4 h-4 text-gray-400" />
+                <Hash className="w-4 h-4 text-gray-400" />
                 <span className="text-sm">{charCount} chars</span>
               </div>
             </div>
@@ -369,7 +335,7 @@ const CleanTextEditor = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-purple-400 font-bold">TOOLS:</span>
+              <span className="text-purple-400 font-bold">FORMAT:</span>
               {tools.map(tool => (
                 <motion.button
                   key={tool.id}
@@ -389,16 +355,39 @@ const CleanTextEditor = () => {
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-purple-400 font-bold">THEME:</span>
-              <select
-                value={theme}
-                onChange={(e) => setTheme(e.target.value)}
-                className="px-3 py-1 bg-gray-800 border border-gray-700 rounded text-sm text-white"
-              >
-                {themes.map(theme => (
-                  <option key={theme.id} value={theme.id}>{theme.name}</option>
-                ))}
-              </select>
+              <span className="text-purple-400 font-bold">ALIGN:</span>
+              {alignmentTools.map(tool => (
+                <motion.button
+                  key={tool.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setTextAlign(tool.id)}
+                  className={`p-2 rounded-lg transition-all ${
+                    textAlign === tool.id 
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' 
+                      : 'bg-gray-800 hover:bg-gray-700'
+                  }`}
+                  title={tool.name}
+                >
+                  <tool.icon className="w-4 h-4" />
+                </motion.button>
+              ))}
+            </div>
+            
+            <div className="flex items-center gap-2">
+              <span className="text-purple-400 font-bold">LISTS:</span>
+              {listTools.map(tool => (
+                <motion.button
+                  key={tool.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => applyFormat(tool.id)}
+                  className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all"
+                  title={tool.name}
+                >
+                  <tool.icon className="w-4 h-4" />
+                </motion.button>
+              ))}
             </div>
           </div>
           
@@ -410,25 +399,28 @@ const CleanTextEditor = () => {
                 onChange={(e) => setFontFamily(e.target.value)}
                 className="px-3 py-1 bg-gray-800 border border-gray-700 rounded text-sm text-white"
               >
-                <option value="Monaco">Monaco</option>
-                <option value="Consolas">Consolas</option>
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Helvetica">Helvetica</option>
                 <option value="Courier New">Courier New</option>
-                <option value="Fira Code">Fira Code</option>
-                <option value="Source Code Pro">Source Code Pro</option>
               </select>
             </div>
             
             <div className="flex items-center gap-2">
               <span className="text-sm">Size:</span>
-              <input
-                type="range"
-                min="12"
-                max="24"
+              <select
                 value={fontSize}
                 onChange={(e) => setFontSize(parseInt(e.target.value))}
-                className="w-16 accent-purple-500"
-              />
-              <span className="text-sm w-8">{fontSize}</span>
+                className="px-3 py-1 bg-gray-800 border border-gray-700 rounded text-sm text-white"
+              >
+                <option value="12">12px</option>
+                <option value="14">14px</option>
+                <option value="16">16px</option>
+                <option value="18">18px</option>
+                <option value="20">20px</option>
+                <option value="24">24px</option>
+              </select>
             </div>
             
             <motion.button
@@ -444,36 +436,24 @@ const CleanTextEditor = () => {
         </div>
       </div>
 
-      {/* 📝 TEXT EDITOR */}
+      {/* 📝 DOCUMENT EDITOR */}
       <div className="flex-1 flex flex-col">
         <div className="flex-1 p-6 bg-gradient-to-br from-gray-900 to-black">
-          <div className="max-w-6xl mx-auto h-full">
-            <div className={`w-full h-full ${currentTheme.bg} rounded-lg shadow-2xl relative overflow-hidden`}>
+          <div className="max-w-4xl mx-auto h-full">
+            <div className="w-full h-full bg-white rounded-lg shadow-2xl relative overflow-hidden">
               <textarea
                 ref={editorRef}
                 value={content}
                 onChange={handleContentChange}
-                placeholder="Start typing your code or text here..."
-                className={`w-full h-full p-8 ${currentTheme.text} bg-transparent resize-none outline-none font-mono`}
+                placeholder="Start typing your document here..."
+                className="w-full h-full p-8 text-gray-900 bg-transparent resize-none outline-none"
                 style={{
                   fontSize: `${fontSize}px`,
                   fontFamily: fontFamily,
-                  lineHeight: '1.6',
-                  tabSize: 2
+                  textAlign: textAlign as any,
+                  lineHeight: '1.6'
                 }}
-                spellCheck={false}
               />
-              
-              {/* Line numbers overlay */}
-              <div className="absolute top-0 left-0 p-8 pointer-events-none">
-                <div className="text-gray-500 text-sm font-mono" style={{ fontSize: `${fontSize}px`, lineHeight: '1.6' }}>
-                  {Array.from({ length: lineCount }, (_, i) => (
-                    <div key={i} className="text-right w-8">
-                      {i + 1}
-                    </div>
-                  ))}
-                </div>
-              </div>
               
               {/* GOD MODE AURA */}
               {godMode && (
@@ -488,8 +468,8 @@ const CleanTextEditor = () => {
                       key={i}
                       className="absolute w-2 h-2 bg-blue-400 rounded-full"
                       animate={{
-                        x: [0, Math.random() * 800],
-                        y: [0, Math.random() * 600],
+                        x: [0, Math.random() * 600],
+                        y: [0, Math.random() * 400],
                         scale: [0, 1, 0]
                       }}
                       transition={{
@@ -512,22 +492,18 @@ const CleanTextEditor = () => {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <FileText className="w-4 h-4 text-blue-400" />
-              <span className="text-sm font-medium">TEXT</span>
+              <span className="text-sm font-medium">DOCUMENT</span>
             </div>
             <div className="flex items-center gap-2">
-              <Hash className="w-4 h-4 text-green-400" />
-              <span className="text-sm">{lineCount} lines</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Type className="w-4 h-4 text-yellow-400" />
+              <Type className="w-4 h-4 text-green-400" />
               <span className="text-sm">{wordCount} words</span>
             </div>
             <div className="flex items-center gap-2">
-              <AtSign className="w-4 h-4 text-purple-400" />
-              <span className="text-sm">{charCount} chars</span>
+              <Hash className="w-4 h-4 text-yellow-400" />
+              <span className="text-sm">{charCount} characters</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-red-400" />
+              <Clock className="w-4 h-4 text-purple-400" />
               <span className="text-sm">Auto-saved</span>
             </div>
           </div>
@@ -539,7 +515,7 @@ const CleanTextEditor = () => {
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                 className="w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
               />
-              <span className="text-sm font-bold">TEXT PRO</span>
+              <span className="text-sm font-bold">DOCUMENT PRO</span>
             </div>
             
             <div className="flex items-center gap-2">
@@ -554,7 +530,7 @@ const CleanTextEditor = () => {
       <input
         ref={fileInputRef}
         type="file"
-        accept=".txt,.md,.js,.ts,.jsx,.tsx,.css,.html,.json,.xml,.py,.java,.cpp,.c,.php,.rb,.go,.rs,.swift,.kt,.dart,.scala,.sh,.yaml,.yml,.toml,.ini,.cfg,.conf"
+        accept=".txt,.md,.doc,.docx"
         onChange={handleFileUpload}
         className="hidden"
       />
@@ -562,4 +538,4 @@ const CleanTextEditor = () => {
   )
 }
 
-export default CleanTextEditor
+export default CleanDocumentEditor
