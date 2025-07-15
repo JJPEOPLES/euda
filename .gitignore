@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# IDEs and editors
+.vscode/
+.zencoder/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# Netlify
+.netlify/
+
+# logs
+*.log
+
+# dotenv files (if you add secrets later)
+.env
+.env.*
+
+# optional OS clutter
+*.swp
+*.swo
+
+# TypeScript cache
+*.tsbuildinfo
+
+# macOS OneDrive sync junk (just in case)
+~$*
