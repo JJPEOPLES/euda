@@ -1,8 +1,8 @@
 import React from 'react'
-import UltimateTextEditor from './UltimateTextEditor'
+import CleanTextEditor from './CleanTextEditor'
 
 const TextEditor: React.FC = () => {
-  return <UltimateTextEditor />
+  return <CleanTextEditor />
 }
 
 export default TextEditor
