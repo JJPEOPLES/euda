@@ -2,6 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
+/* GT4 Pro Animation Keyframes - BETTER THAN FIGMA! */
+@keyframes timeline-play {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gt4-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gt4-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
+  }
+}
+
+@keyframes gt4-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* GT4 Pro Cursor Effects */
+.gt4-cursor-crosshair {
+  cursor: crosshair;
+}
+
+.gt4-cursor-grab {
+  cursor: grab;
+}
+
+.gt4-cursor-grabbing {
+  cursor: grabbing;
+}
+
+/* GT4 Pro Grid Animations */
+.gt4-grid-animate {
+  animation: gt4-pulse 2s infinite;
+}
+
+/* GT4 Pro Professional Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007aff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
+
+/* GT4 Pro Dark Mode */
+[data-theme="dark"] {
+  --gt4-bg: #1a1a1a;
+  --gt4-surface: #2a2a2a;
+  --gt4-text: #ffffff;
+  --gt4-accent: #007aff;
+}
+
+/* GT4 Pro Light Mode */
+[data-theme="light"] {
+  --gt4-bg: #ffffff;
+  --gt4-surface: #f8f9fa;
+  --gt4-text: #000000;
+  --gt4-accent: #007aff;
+}
+
 @layer base {
   * {
     @apply border-border;

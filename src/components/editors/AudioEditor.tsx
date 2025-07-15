@@ -67,7 +67,7 @@ const AudioEditor = () => {
         setCurrentTime(wavesurfer.getCurrentTime())
       })
 
-      wavesurfer.on('interaction', () => {
+      wavesurfer.on('play', () => {
         setIsPlaying(true)
       })
 

@@ -10,7 +10,7 @@ import {
   Moon,
   Download,
   Upload,
-  ClipboardShare,
+  Share,
   Settings,
   Plus,
   Copy,

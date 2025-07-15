@@ -1,4 +1,4 @@
-import React, { useState, EditorType } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { X, Upload, FolderOpen, FileText, Image, Video, Music, File } from 'lucide-react'
 import { useStore, EditorType } from '../store/useStore'
@@ -36,7 +36,7 @@ const FileManager: React.FC<FileManagerProps> = ({ onClose }) => {
     
     reader.onload = (e) => {
       const content = e.target?.result as string
-      const fileType = getFileType(file.name as EditorType)
+      const fileType = getFileType(file.name)
       
       const newFile = {
         id: Math.random().toString(36).substr(2, 9),
