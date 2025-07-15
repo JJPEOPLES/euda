@@ -117,6 +117,11 @@ const About = () => {
             >
               🚀
             </motion.div>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-black px-6 py-3 rounded-full mb-6">
+              <Sparkles className="w-6 h-6" />
+              <span className="text-lg font-bold">POWERED BY GT4 FROM K2LANG.ORG</span>
+            </div>
+            
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               Built by an
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600">
@@ -124,10 +129,37 @@ const About = () => {
               </span>
               Developer
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto">
               Proving that age is just a number when you have passion, creativity, and determination. 
               Euda is a professional-grade editing suite that rivals expensive alternatives - and it's completely free!
             </p>
+            
+            <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6 rounded-2xl mx-auto max-w-4xl mb-8">
+              <p className="text-lg font-bold mb-2">
+                🔥 FEATURING THE LEGENDARY GT4 DRAWING ENGINE! 🔥
+              </p>
+              <p className="text-md mb-4">
+                Euda's image editor is powered by the revolutionary GT4 Drawing Engine - created by the same 11-year-old developer who's changing the world of digital art!
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a 
+                  href="https://gt4.k2lang.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-yellow-500 text-black px-6 py-3 rounded-full font-bold hover:bg-yellow-400 transition-colors"
+                >
+                  🎨 Try GT4 Standalone
+                </a>
+                <a 
+                  href="https://k2lang.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white text-purple-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors"
+                >
+                  🌟 Explore K2Lang.org
+                </a>
+              </div>
+            </div>
             <div className="flex items-center justify-center gap-4 mb-8">
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -160,6 +192,73 @@ const About = () => {
               <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* GT4 Engine Section */}
+        <motion.div variants={itemVariants} className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              🔥 The <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-500">GT4</span> Revolution
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 text-lg">
+              Euda's image editor is powered by the legendary GT4 Drawing Engine
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">🎨 GT4 Drawing Engine</h3>
+              <div className="space-y-3 text-gray-600 dark:text-gray-300">
+                <p>✨ Better than Figma, Photoshop & Canva combined</p>
+                <p>🚀 Professional-grade tools & brushes</p>
+                <p>🎯 Unlimited layers & advanced effects</p>
+                <p>👥 Real-time collaboration features</p>
+                <p>🧠 AI-powered smart suggestions</p>
+                <p>⚡ Lightning-fast GPU acceleration</p>
+              </div>
+              <a 
+                href="https://gt4.k2lang.org" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block mt-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-black px-6 py-3 rounded-full font-bold hover:shadow-lg transition-all"
+              >
+                🎨 Try GT4 Standalone →
+              </a>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">🌟 K2Lang.org</h3>
+              <div className="space-y-3 text-gray-600 dark:text-gray-300">
+                <p>🏠 Home of GT4 & amazing projects</p>
+                <p>🎓 Learn from a young coding prodigy</p>
+                <p>💡 Innovative tools & applications</p>
+                <p>🚀 Cutting-edge technology</p>
+                <p>📱 Mobile & web applications</p>
+                <p>🎮 Games & interactive experiences</p>
+              </div>
+              <a 
+                href="https://k2lang.org" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block mt-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg transition-all"
+              >
+                🌟 Explore K2Lang.org →
+              </a>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white p-8 rounded-2xl text-center">
+            <h3 className="text-3xl font-bold mb-4">🔥 Why GT4 is LEGENDARY</h3>
+            <p className="text-lg mb-6">
+              GT4 has achieved what billion-dollar companies couldn't - a truly free, powerful, and intuitive drawing engine that rivals the best paid software!
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <div className="bg-white/20 px-4 py-2 rounded-full font-bold">0$ Forever Free</div>
+              <div className="bg-white/20 px-4 py-2 rounded-full font-bold">∞ Unlimited Features</div>
+              <div className="bg-white/20 px-4 py-2 rounded-full font-bold">🚀 Better Performance</div>
+              <div className="bg-white/20 px-4 py-2 rounded-full font-bold">👨‍💻 11-Year-Old Creator</div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Story Section */}

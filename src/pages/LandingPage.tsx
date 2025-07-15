@@ -127,6 +127,14 @@ const LandingPage = () => {
               <a href="#comparison" className="text-white hover:text-primary-400 transition-colors">Compare</a>
               <a href="#pricing" className="text-white hover:text-primary-400 transition-colors">Pricing</a>
               <Link to="/about" className="text-white hover:text-primary-400 transition-colors">About</Link>
+              <a href="https://gt4.k2lang.org" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 transition-colors flex items-center gap-1 font-semibold">
+                <Sparkles className="w-4 h-4" />
+                GT4 Engine
+              </a>
+              <a href="https://k2lang.org" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 font-semibold">
+                <Star className="w-4 h-4" />
+                K2Lang.org
+              </a>
               <a href="https://github.com/JJPEOPLES/euda" className="text-white hover:text-primary-400 transition-colors flex items-center gap-1">
                 <Github className="w-4 h-4" />
                 GitHub
@@ -155,6 +163,14 @@ const LandingPage = () => {
                 <a href="#comparison" className="text-white hover:text-primary-400 transition-colors">Compare</a>
                 <a href="#pricing" className="text-white hover:text-primary-400 transition-colors">Pricing</a>
                 <Link to="/about" className="text-white hover:text-primary-400 transition-colors">About</Link>
+                <a href="https://gt4.k2lang.org" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 transition-colors flex items-center gap-1 font-semibold">
+                  <Sparkles className="w-4 h-4" />
+                  GT4 Engine
+                </a>
+                <a href="https://k2lang.org" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 font-semibold">
+                  <Star className="w-4 h-4" />
+                  K2Lang.org
+                </a>
                 <a href="https://github.com/JJPEOPLES/euda" className="text-white hover:text-primary-400 transition-colors flex items-center gap-1">
                   <Github className="w-4 h-4" />
                   GitHub
@@ -174,6 +190,11 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white text-sm font-medium mb-6">
+              <Sparkles className="w-4 h-4" />
+              Powered by GT4 Drawing Engine from K2Lang.org
+            </div>
+            
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               The Ultimate
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">
@@ -181,10 +202,20 @@ const LandingPage = () => {
               </span>
               Editor
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto">
               Professional-grade editing suite for text, images, videos, audio, and documents. 
               Completely free, open-source, and better than expensive alternatives.
             </p>
+            
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-4 rounded-lg mx-auto max-w-4xl mb-8">
+              <p className="text-lg font-bold mb-2">
+                🔥 Features the LEGENDARY GT4 Drawing Engine! 🔥
+              </p>
+              <p className="text-md">
+                Created by an 11-year-old developer • Better than Figma, Photoshop & Canva • Visit <a href="https://k2lang.org" target="_blank" rel="noopener noreferrer" className="underline font-bold hover:text-red-600">K2Lang.org</a> for more incredible projects!
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link 
                 to="/editor" 
@@ -215,6 +246,95 @@ const LandingPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-400 mb-2">0</div>
                 <div className="text-gray-300">Data Collection</div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* GT4 & K2Lang.org Showcase */}
+      <section className="py-20 px-6 bg-gradient-to-r from-purple-900 via-pink-900 to-red-900">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-2 bg-yellow-500 text-black px-6 py-3 rounded-full mb-8">
+              <Sparkles className="w-6 h-6" />
+              <span className="text-lg font-bold">LEGENDARY GT4 DRAWING ENGINE</span>
+            </div>
+            
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">GT4</span> Revolution
+            </h2>
+            
+            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto">
+              Euda's image editor is powered by the LEGENDARY GT4 Drawing Engine - created by an 11-year-old developer who's revolutionizing digital art!
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-black/30 p-8 rounded-2xl border border-yellow-500/20">
+                <h3 className="text-2xl font-bold text-yellow-400 mb-4">🎨 GT4 Drawing Engine</h3>
+                <ul className="text-gray-300 space-y-2 text-left">
+                  <li>✨ Better than Figma, Photoshop & Canva</li>
+                  <li>🚀 Professional-grade tools & brushes</li>
+                  <li>🎯 Unlimited layers & advanced effects</li>
+                  <li>👥 Real-time collaboration</li>
+                  <li>🧠 AI-powered features</li>
+                  <li>⚡ Lightning-fast performance</li>
+                </ul>
+                <a 
+                  href="https://gt4.k2lang.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block mt-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full font-bold hover:shadow-lg transition-shadow"
+                >
+                  Try GT4 Standalone →
+                </a>
+              </div>
+              
+              <div className="bg-black/30 p-8 rounded-2xl border border-purple-500/20">
+                <h3 className="text-2xl font-bold text-purple-400 mb-4">🌟 K2Lang.org</h3>
+                <ul className="text-gray-300 space-y-2 text-left">
+                  <li>🏠 Home of GT4 & amazing projects</li>
+                  <li>🎓 Learn from a young coding prodigy</li>
+                  <li>💡 Innovative tools & applications</li>
+                  <li>🚀 Cutting-edge technology</li>
+                  <li>📱 Mobile & web applications</li>
+                  <li>🎮 Games & interactive experiences</li>
+                </ul>
+                <a 
+                  href="https://k2lang.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block mt-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg transition-shadow"
+                >
+                  Explore K2Lang.org →
+                </a>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white p-8 rounded-2xl">
+              <h3 className="text-3xl font-bold mb-4">🔥 Why GT4 is LEGENDARY</h3>
+              <p className="text-lg mb-6">
+                Created by an 11-year-old developer, GT4 has achieved what billion-dollar companies couldn't - 
+                a truly free, powerful, and intuitive drawing engine that rivals the best paid software!
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <div className="bg-white/20 px-4 py-2 rounded-full">
+                  <strong>0$</strong> Forever Free
+                </div>
+                <div className="bg-white/20 px-4 py-2 rounded-full">
+                  <strong>∞</strong> Unlimited Features
+                </div>
+                <div className="bg-white/20 px-4 py-2 rounded-full">
+                  <strong>🚀</strong> Better Performance
+                </div>
+                <div className="bg-white/20 px-4 py-2 rounded-full">
+                  <strong>👨‍💻</strong> 11-Year-Old Creator
+                </div>
               </div>
             </div>
           </motion.div>
@@ -296,7 +416,31 @@ const LandingPage = () => {
                 </div>
                 <span className="text-xl font-bold text-white">Euda</span>
               </div>
-              <p className="text-gray-400">The ultimate free editing suite for creators worldwide.</p>
+              <p className="text-gray-400 mb-4">The ultimate free editing suite for creators worldwide.</p>
+              
+              <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-black p-4 rounded-lg mb-4">
+                <p className="font-bold text-sm mb-2">🔥 POWERED BY GT4 ENGINE</p>
+                <p className="text-xs">Created by an 11-year-old developer</p>
+              </div>
+              
+              <div className="space-y-2">
+                <a 
+                  href="https://gt4.k2lang.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
+                >
+                  🎨 GT4 Drawing Engine →
+                </a>
+                <a 
+                  href="https://k2lang.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
+                >
+                  🌟 Visit K2Lang.org →
+                </a>
+              </div>
             </div>
             
             <div>
