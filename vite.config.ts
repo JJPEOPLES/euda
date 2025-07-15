@@ -22,7 +22,6 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           monaco: ['@monaco-editor/react'],
-          fabric: ['fabric'],
           ui: ['lucide-react', 'framer-motion'],
         },
       },
