@@ -1,6 +1,11 @@
-import React, { useRef, useEffect } from 'react'
-import { Editor } from '@monaco-editor/react'
-import { useStore } from '../../store/useStore'
+import React from 'react'
+import UltimateTextEditor from './UltimateTextEditor'
+
+const TextEditor: React.FC = () => {
+  return <UltimateTextEditor />
+}
+
+export default TextEditor
 import { motion } from 'framer-motion'
 import { 
   Type, 

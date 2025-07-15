@@ -4,6 +4,13 @@
 
 **The professional editing suite that's completely free and better than paid alternatives.**
 
+## 🔥 **POWERED BY THE LEGENDARY GT4 DRAWING ENGINE** 🔥
+
+### 🌟 **Visit [K2Lang.org](https://k2lang.org) - Home of GT4 & Amazing Projects!**
+### 🎨 **Try [GT4 Standalone](https://gt4.k2lang.org) - The Revolutionary Drawing Engine!**
+
+**Created by an 11-year-old developer who's changing the world of digital art!**
+
 ## 🚀 Features
 
 Euda is an all-in-one editing suite that combines five powerful editors in one beautiful interface:
@@ -101,13 +108,13 @@ Euda is an all-in-one editing suite that combines five powerful editors in one b
 ## 🚀 Getting Started
 
 ### Online Version
-Visit [euda.app](https://euda.app) to start using Euda instantly in your browser.
+Visit [euda](https://euda.k2lang.org) to start using Euda instantly in your browser.
 
 ### Local Development
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/euda-app/euda.git
+   git clone https://github.com/JJPEOPLES/euda.git
    cd euda
    ```
 

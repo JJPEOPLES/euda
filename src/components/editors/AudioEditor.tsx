@@ -1,6 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
-import WaveSurfer from 'wavesurfer.js'
-import { useStore } from '../../store/useStore'
+import React from 'react'
+import UltimateAudioEditor from './UltimateAudioEditor'
+
+const AudioEditor: React.FC = () => {
+  return <UltimateAudioEditor />
+}
+
+export default AudioEditor
 import { motion } from 'framer-motion'
 import { 
   Music,

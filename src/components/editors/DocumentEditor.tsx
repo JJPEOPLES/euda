@@ -1,7 +1,11 @@
-import React, { useRef, useEffect } from 'react'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import { useStore } from '../../store/useStore'
+import React from 'react'
+import UltimateDocumentEditor from './UltimateDocumentEditor'
+
+const DocumentEditor: React.FC = () => {
+  return <UltimateDocumentEditor />
+}
+
+export default DocumentEditor
 import { motion } from 'framer-motion'
 import { 
   FileText,

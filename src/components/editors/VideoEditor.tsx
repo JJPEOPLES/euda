@@ -1,6 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
-import ReactPlayer from 'react-player'
-import { useStore } from '../../store/useStore'
+import React from 'react'
+import UltimateVideoEditor from './UltimateVideoEditor'
+
+const VideoEditor: React.FC = () => {
+  return <UltimateVideoEditor />
+}
+
+export default VideoEditor
 import { motion } from 'framer-motion'
 import { 
   Video,
