@@ -230,7 +230,7 @@ const TextEditor = () => {
             scrollBeyondLastLine: false,
             smoothScrolling: true,
             cursorBlinking: 'smooth',
-            cursorSmoothCaretAnimation: true,
+            cursorSmoothCaretAnimation: 'on',
             renderLineHighlight: 'gutter',
             renderWhitespace: 'selection',
             bracketPairColorization: { enabled: true },

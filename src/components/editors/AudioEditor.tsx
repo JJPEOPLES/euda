@@ -47,10 +47,10 @@ const AudioEditor = () => {
         barWidth: 2,
         barGap: 1,
         height: 128,
-        responsive: true,
+
         backend: 'WebAudio',
         interact: true,
-        normalize: true,
+
       })
 
       const wavesurfer = wavesurferRef.current
@@ -63,11 +63,11 @@ const AudioEditor = () => {
         setCurrentTime(wavesurfer.getCurrentTime())
       })
 
-      wavesurfer.on('seek', () => {
+      wavesurfer.on('interaction', () => {
         setCurrentTime(wavesurfer.getCurrentTime())
       })
 
-      wavesurfer.on('play', () => {
+      wavesurfer.on('interaction', () => {
         setIsPlaying(true)
       })
 

@@ -10,11 +10,11 @@ import {
   Moon,
   Download,
   Upload,
-  Share,
+  ClipboardShare,
   Settings,
   Plus,
   Copy,
-  Paste,
+  ClipboardPaste,
   Search,
   MoreHorizontal
 } from 'lucide-react'
