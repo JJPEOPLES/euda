@@ -36,10 +36,10 @@ const LandingPage = () => {
     },
     {
       icon: Image,
-      title: "Professional Image Editor",
-      description: "Layer-based editing, filters, effects, vector graphics, and advanced photo manipulation tools.",
+      title: "Professional Image Editor (GT4 Powered)",
+      description: "Advanced drawing engine from GT4 with professional brushes, unlimited layers, and real-time collaboration - better than Procreate.",
       color: "from-purple-500 to-pink-500",
-      highlights: ["Layers & masks", "Filters & effects", "Vector tools", "Format conversion"]
+      highlights: ["GT4 Drawing Engine", "Professional brushes", "Unlimited layers", "Real-time collaboration"]
     },
     {
       icon: Video,
@@ -315,6 +315,7 @@ const LandingPage = () => {
               <ul className="space-y-2 text-gray-400">
                 <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
                 <li><a href="https://github.com/JJPEOPLES/euda" className="hover:text-white transition-colors">GitHub</a></li>
+                <li><a href="https://gt4.k2lang.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GT4 Drawing Engine</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
               </ul>

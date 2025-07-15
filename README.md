@@ -16,13 +16,18 @@ Euda is an all-in-one editing suite that combines five powerful editors in one b
 - **Customizable themes** and font settings
 - **Keyboard shortcuts** for productivity
 
-### 🖼️ Image Editor
-- **Layer-based editing** with Fabric.js
-- **Drawing tools** (brush, shapes, text)
-- **Color picker** and customizable brushes
-- **Image upload** and export
-- **Undo/redo** functionality
-- **Object manipulation** (resize, rotate, layer management)
+### 🖼️ Image Editor (Powered by GT4)
+- **Professional-grade drawing engine** from [GT4](https://gt4.k2lang.org)
+- **Advanced layer system** with unlimited layers and blending modes
+- **Professional brushes** with pressure sensitivity and custom settings
+- **Real-time collaboration** and live user tracking
+- **Advanced tools** (selection, shapes, text, filters)
+- **Export options** (PNG, JPG, SVG, PSD)
+- **Undo/redo** with full history management
+- **Zoom and pan** controls for precise editing
+- **Color management** with palettes and custom colors
+
+*The GT4 Drawing Engine is an advanced drawing application created by an 11-year-old developer that rivals expensive software like Procreate while being completely free.*
 
 ### 🎬 Video Editor
 - **Timeline-based editing** with ReactPlayer
@@ -108,13 +113,29 @@ Visit [euda.app](https://euda.app) to start using Euda instantly in your browser
 - **Frontend**: React 18, TypeScript, Tailwind CSS
 - **Build Tool**: Vite
 - **Code Editor**: Monaco Editor
-- **Image Editing**: Fabric.js
+- **Image Editing**: GT4 Drawing Engine (Fabric.js, Material-UI)
 - **Video Player**: ReactPlayer
 - **Audio Processing**: WaveSurfer.js
 - **Document Editing**: ReactQuill
 - **State Management**: Zustand
 - **Animations**: Framer Motion
 - **Deployment**: Netlify
+
+## 🌐 Live Demo
+
+Visit **[euda.k2lang.org](https://euda.k2lang.org)** to try Euda online!
+
+## 🎨 GT4 Integration
+
+Euda's advanced image editing capabilities are powered by the **GT4 Drawing Engine** - a professional-grade drawing application created by an 11-year-old developer. GT4 features:
+
+- Professional brushes and tools
+- Advanced layer management
+- Real-time collaboration
+- Multiple export formats
+- Performance that rivals expensive software
+
+Learn more about GT4 at **[gt4.k2lang.org](https://gt4.k2lang.org)**
 
 ## 🎨 Supported File Types
 
@@ -196,7 +217,7 @@ Euda is open source and available under the [MIT License](LICENSE).
 ## 🙏 Acknowledgments
 
 - [Monaco Editor](https://microsoft.github.io/monaco-editor/) for the amazing code editor
-- [Fabric.js](http://fabricjs.com/) for powerful canvas manipulation
+- Native HTML5 Canvas for image editing
 - [ReactPlayer](https://github.com/cookpete/react-player) for video playback
 - [WaveSurfer.js](https://wavesurfer-js.org/) for audio visualization
 - [ReactQuill](https://github.com/zenoamaro/react-quill) for rich text editing
