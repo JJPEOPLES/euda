@@ -210,7 +210,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-2 text-sm text-purple-200">
                   <Sparkles className="w-4 h-4" />
-                  <span>AI Ready</span>
+                  <span>{geminiAI.isInitialized() ? 'AI Ready' : 'AI Error'}</span>
                 </div>
                 <button
                   onClick={onClose}
@@ -266,23 +266,57 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
                     />
                   </div>
                   
-                  <button
-                    type="submit"
-                    disabled={isLoading || !prompt.trim()}
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all flex items-center justify-center gap-2"
-                  >
-                    {isLoading ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        Thinking...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        Send
-                      </>
-                    )}
-                  </button>
+                  <div className="flex gap-2">
+                    <div className="flex gap-2">
+                    <button
+                        type="submit"
+                        disabled={isLoading || !prompt.trim()}
+                        className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                        >
+                          {isLoading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                            Thinking...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5" />
+                            Send
+                          </>
+                        )}
+                      </button>
+                    
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        setPrompt('Hello! Can you tell me what you can do?')
+                        const form = document.querySelector('form')
+                        if (form) {
+                          form.dispatchEvent(new Event('submit', { bubbles: true }))
+                        }
+                      }}
+                      disabled={isLoading}
+                      className="px-4 py-3 bg-gray-700 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600 transition-all"
+                    >
+                      Test
+                    </button>
+                  </div>
+                    
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        setPrompt('Hello! Can you tell me what you can do?')
+                        const form = document.querySelector('form')
+                        if (form) {
+                          form.dispatchEvent(new Event('submit', { bubbles: true }))
+                        }
+                      }}
+                      disabled={isLoading}
+                      className="px-4 py-3 bg-gray-700 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600 transition-all"
+                    >
+                      Test
+                    </button>
+                  </div>
                 </form>
               </div>
             )}

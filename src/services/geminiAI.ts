@@ -20,9 +20,45 @@ class GeminiAIService {
     }
 
     try {
-      this.genAI = new GoogleGenerativeAI(apiKey)
-      this.model = this.genAI.getGenerativeModel({ model: 'gemini-pro' })
-      console.log('Gemini AI initialized successfully')
+      
+      // Try different model names in order of preference
+      const modelNames = [
+        'gemini-1.5-flash',
+        'gemini-1.5-pro',
+        'gemini-pro',
+        'models/gemini-1.5-flash',
+        'models/gemini-1.5-pro',
+        'models/gemini-pro'
+      ]
+      
+      for (const modelName of modelNames) {
+        try {
+          this.genAI = new GoogleGenerativeAI(apiKey)
+      
+      // Try different model names in order of preference
+      const modelNames = [
+        'gemini-1.5-flash',
+        'gemini-1.5-pro',
+        modelName,
+            'models/gemini-1.5-flash',
+        'models/gemini-1.5-pro',
+        'models/gemini-pro'
+      ]
+      
+      for (const modelName of modelNames) {
+        try {
+          this.model = this.genAI.getGenerativeModel({ model: modelName })
+          console.log(`Gemini AI initialized successfully with model: ${modelName}`)
+          break
+        } catch (modelError) {
+          console.log(`Failed to initialize model ${modelName}:`, modelError)
+          continue
+        }
+      }
+      
+      if (!this.model) {
+        throw new Error('No available Gemini model found')
+      }
     } catch (error) {
       console.error('Failed to initialize Gemini AI:', error)
     }
@@ -139,6 +175,20 @@ Documentation:`
 
   isInitialized(): boolean {
     return !!this.model
+  }
+
+  async listAvailableModels(): Promise<void> {
+    try {
+      if (!this.genAI) {
+        console.error('Gemini AI not initialized')
+        return
+      }
+      
+      const models = await this.genAI.listModels()
+      console.log('Available Gemini models:', models)
+    } catch (error) {
+      console.error('Error listing models:', error)
+    }
   }
 }
 
