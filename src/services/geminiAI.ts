@@ -20,6 +20,7 @@ class GeminiAIService {
     }
 
     try {
+      this.genAI = new GoogleGenerativeAI(apiKey)
       
       // Try different model names in order of preference
       const modelNames = [
@@ -27,20 +28,6 @@ class GeminiAIService {
         'gemini-1.5-pro',
         'gemini-pro',
         'models/gemini-1.5-flash',
-        'models/gemini-1.5-pro',
-        'models/gemini-pro'
-      ]
-      
-      for (const modelName of modelNames) {
-        try {
-          this.genAI = new GoogleGenerativeAI(apiKey)
-      
-      // Try different model names in order of preference
-      const modelNames = [
-        'gemini-1.5-flash',
-        'gemini-1.5-pro',
-        modelName,
-            'models/gemini-1.5-flash',
         'models/gemini-1.5-pro',
         'models/gemini-pro'
       ]
