@@ -7,27 +7,56 @@ class GeminiAIService {
   constructor() {
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY
     
+    console.log('Environment check:', {
+      hasApiKey: !!apiKey,
+      apiKeyLength: apiKey?.length,
+      envVars: import.meta.env
+    })
+    
     if (!apiKey) {
-      console.warn('Gemini API key not found in environment variables')
+      console.error('Gemini API key not found in environment variables')
+      console.error('Available env vars:', Object.keys(import.meta.env))
       return
     }
 
-    this.genAI = new GoogleGenerativeAI(apiKey)
-    this.model = this.genAI.getGenerativeModel({ model: 'gemini-pro' })
+    try {
+      this.genAI = new GoogleGenerativeAI(apiKey)
+      this.model = this.genAI.getGenerativeModel({ model: 'gemini-pro' })
+      console.log('Gemini AI initialized successfully')
+    } catch (error) {
+      console.error('Failed to initialize Gemini AI:', error)
+    }
   }
 
   async generateText(prompt: string): Promise<string> {
     try {
       if (!this.model) {
-        throw new Error('Gemini AI not initialized')
+        throw new Error('Gemini AI not initialized. Please check your API key.')
       }
 
+      console.log('Sending request to Gemini AI...')
       const result = await this.model.generateContent(prompt)
       const response = await result.response
-      return response.text()
-    } catch (error) {
+      const text = response.text()
+      console.log('Received response from Gemini AI')
+      return text
+    } catch (error: any) {
       console.error('Error generating text:', error)
-      throw error
+      
+      // Handle specific error types
+      if (error.message?.includes('API key')) {
+        throw new Error('Invalid API key. Please check your Gemini API key.')
+      }
+      
+      if (error.message?.includes('quota')) {
+        throw new Error('API quota exceeded. Please try again later.')
+      }
+      
+      if (error.message?.includes('network') || error.name === 'NetworkError') {
+        throw new Error('Network error. Please check your internet connection.')
+      }
+      
+      throw new Error(`AI Service Error: ${error.message || 'Unknown error occurred'}`)
     }
   }
 

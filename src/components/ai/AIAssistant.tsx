@@ -15,7 +15,8 @@ import {
   Languages,
   Lightbulb,
   Wrench,
-  BookOpen
+  BookOpen,
+  AlertCircle
 } from 'lucide-react'
 import geminiAI from '../../services/geminiAI'
 
@@ -39,6 +40,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
   const [isLoading, setIsLoading] = useState(false)
   const [copied, setCopied] = useState(false)
   const [activeTab, setActiveTab] = useState('chat')
+  const [error, setError] = useState('')
 
   const quickActions = [
     { 
@@ -87,12 +89,21 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
 
   const handleQuickAction = async (action: string) => {
     if (!currentContent.trim()) {
-      setResponse('Please select some text first!')
+      setError('Please select some text first!')
+      setResponse('')
       return
     }
 
     setIsLoading(true)
+    setError('')
+    setResponse('')
+    
     try {
+      // Check if AI is initialized
+      if (!geminiAI.isInitialized()) {
+        throw new Error('AI Service is not properly initialized. Please check your API key.')
+      }
+
       let result = ''
       
       switch (action) {
@@ -117,9 +128,9 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
       }
       
       setResponse(result)
-    } catch (error) {
+    } catch (error: any) {
       console.error('AI Error:', error)
-      setResponse('Sorry, I encountered an error. Please try again.')
+      setError(error.message || 'An unknown error occurred. Please try again.')
     } finally {
       setIsLoading(false)
     }
@@ -130,12 +141,20 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
     if (!prompt.trim()) return
 
     setIsLoading(true)
+    setError('')
+    setResponse('')
+    
     try {
+      // Check if AI is initialized
+      if (!geminiAI.isInitialized()) {
+        throw new Error('AI Service is not properly initialized. Please check your API key.')
+      }
+
       const result = await geminiAI.generateText(prompt)
       setResponse(result)
-    } catch (error) {
+    } catch (error: any) {
       console.error('AI Error:', error)
-      setResponse('Sorry, I encountered an error. Please try again.')
+      setError(error.message || 'An unknown error occurred. Please try again.')
     } finally {
       setIsLoading(false)
     }
@@ -291,10 +310,12 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
           </div>
 
           {/* Response */}
-          {(response || isLoading) && (
+          {(response || isLoading || error) && (
             <div className="border-t border-purple-500/30 bg-gray-900/50 p-6">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-medium text-white">Response:</h3>
+                <h3 className="text-lg font-medium text-white">
+                  {error ? 'Error:' : 'Response:'}
+                </h3>
                 {response && (
                   <div className="flex items-center gap-2">
                     <button
@@ -320,11 +341,18 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
                 )}
               </div>
               
-              <div className="bg-gray-800 rounded-lg p-4 max-h-60 overflow-y-auto">
+              <div className={`rounded-lg p-4 max-h-60 overflow-y-auto ${
+                error ? 'bg-red-900/30 border border-red-500/50' : 'bg-gray-800'
+              }`}>
                 {isLoading ? (
                   <div className="flex items-center gap-2 text-gray-400">
                     <Loader2 className="w-4 h-4 animate-spin" />
                     <span>AI is thinking...</span>
+                  </div>
+                ) : error ? (
+                  <div className="flex items-center gap-2 text-red-400">
+                    <AlertCircle className="w-4 h-4" />
+                    <span className="text-sm">{error}</span>
                   </div>
                 ) : (
                   <pre className="whitespace-pre-wrap text-gray-300 text-sm">
