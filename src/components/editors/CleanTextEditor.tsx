@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useStore } from '../../store/useStore'
 import { motion } from 'framer-motion'
+import AIAssistant from '../ai/AIAssistant'
 import { 
   FileText,
   Type,
@@ -94,6 +95,7 @@ const CleanTextEditor = () => {
   const [wordCount, setWordCount] = useState(0)
   const [lineCount, setLineCount] = useState(1)
   const [charCount, setCharCount] = useState(0)
+  const [isAIOpen, setIsAIOpen] = useState(false)
 
   const tools = [
     { id: 'text', icon: Type, name: 'Text', color: 'text-blue-500' },
@@ -161,6 +163,15 @@ const CleanTextEditor = () => {
         updateFile(currentFile.id, { content: newContent })
       }
     }
+  }
+
+  const getSelectedText = () => {
+    if (editorRef.current) {
+      const start = editorRef.current.selectionStart
+      const end = editorRef.current.selectionEnd
+      return content.substring(start, end)
+    }
+    return ''
   }
 
   const applyFormat = (format: string) => {
@@ -329,7 +340,7 @@ const CleanTextEditor = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setAiMode(!aiMode)}
+              onClick={() => setIsAIOpen(true)}
               className={`px-4 py-2 rounded-lg font-bold transition-all ${
                 aiMode 
                   ? 'bg-gradient-to-r from-pink-400 to-violet-400 text-black' 
@@ -337,7 +348,7 @@ const CleanTextEditor = () => {
               }`}
             >
               <Brain className="w-5 h-5 inline mr-2" />
-              {aiMode ? 'AI ON' : 'AI ASSISTANT'}
+              AI ASSISTANT
             </motion.button>
             
             <motion.button
@@ -556,6 +567,15 @@ const CleanTextEditor = () => {
         accept=".txt,.md,.js,.ts,.jsx,.tsx,.css,.html,.json,.xml,.py,.java,.cpp,.c,.php,.rb,.go,.rs,.swift,.kt,.dart,.scala,.sh,.yaml,.yml,.toml,.ini,.cfg,.conf"
         onChange={handleFileUpload}
         className="hidden"
+      />
+
+      {/* AI Assistant */}
+      <AIAssistant
+        isOpen={isAIOpen}
+        onClose={() => setIsAIOpen(false)}
+        onInsertText={insertText}
+        currentContent={getSelectedText() || content}
+        editorType="text"
       />
     </div>
   )
